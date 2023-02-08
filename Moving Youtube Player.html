@@ -1,0 +1,81 @@
+<!Doctype html>
+<html>
+<style>
+    #myContainer {
+        width: 400px;
+        height: 300px;
+        position: relative;
+    }
+
+    #myYoutubePlayer {
+        width: 120px;
+        height: 60px;
+        position: relative;
+    }
+</style>
+
+<body>
+
+    <h1>My Annoying Youtube Player :3</h1>
+
+    <div id="myContainer" >
+
+        <iframe id='myYoutubePlayer' src="https://www.youtube.com/embed/WrRSbvUZca8?start=50"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+
+        <script>
+            var monitor = setInterval(function(){
+                let elem = document.activeElement;
+                if(elem && elem.tagName == 'IFRAME'){
+                    moveObject(elem)
+                    clearInterval(monitor);
+                }
+            }, 100);
+
+
+            var rectId = null;
+            function moveObject(elem) {
+                let changeX = 2;
+                let changeY = 2;
+                count = 0;
+                let computedStyles = window.getComputedStyle(elem);
+                let xPos = parseInt(computedStyles.left);
+                let yPos = parseInt(computedStyles.top);
+                clearInterval(rectId);
+                rectId = setInterval(frame, 15);
+                function frame() {
+                    count++;
+                    if (count % 10 == 0) {
+                        changeX = ((changeX / Math.abs(changeX)) * ((Math.random()*6) % 6));
+                        changeY = ((changeY / Math.abs(changeY)) * ((Math.random()*6) % 6));
+                    }
+                    
+                    if (changeX < 0 && xPos < 0) {
+                        changeX = Math.abs(changeX);
+                    } else if (changeX > 0 && xPos > window.innerWidth - elem.offsetWidth) {
+                        changeX = -Math.abs(changeX);
+                    }
+    
+                    if (changeY < 0 && yPos < 0) {
+                        changeY = Math.abs(changeY);
+                    } else if (changeY > 0 && yPos > window.innerHeight - elem.offsetHeight - 80) {
+                        changeY = -Math.abs(changeY);
+                    }
+    
+                    xPos += changeX - 2;
+                    yPos += changeY - 2;
+    
+                    elem.style.top = yPos + 'px';
+                    elem.style.left = xPos + 'px';
+                }
+            }
+        </script>
+    </div>
+
+    
+
+</body>
+
+</html>
