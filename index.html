@@ -64,8 +64,8 @@
                         changeY = -Math.abs(changeY);
                     }
     
-                    xPos += changeX - 2;
-                    yPos += changeY - 2;
+                    xPos += changeX + ((changeX / Math.abs(changeX)) * -2);
+                    yPos += changeY + ((changeY / Math.abs(changeY)) * -2);
     
                     elem.style.top = yPos + 'px';
                     elem.style.left = xPos + 'px';
