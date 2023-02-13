@@ -1,9 +1,9 @@
 <!Doctype html>
 <html>
 <style>
-    #myContainer {
-        width: 400px;
-        height: 300px;
+    #myTitle {
+        width: auto;
+        height: auto;
         position: relative;
     }
 
@@ -21,10 +21,46 @@
 
 <body>
 
-    <h1 style="text-align: center; font-family:'Courier New', Courier, monospace;
-        border-width: 3px; border-style: solid; border-color: aqua;">
-        My Annoying Youtube Player :3
-    </h1>
+    <div id="AnimatedTitleScreen">
+        <h1 id='myTitle' style="text-align: center; font-family:'Courier New', Courier, monospace;
+            border-width: 3px; border-style: solid; border-color: aqua;">
+            My Annoying Youtube Player :3
+        </h1>
+
+        <script>
+            const annoyingSynonym = ['Annoying', 'Irritating', 'Infuriating', 'Bothersome',
+                'Troublesome', 'Cute?', 'Pesky'];
+            let wordIndex = 0;
+            let letterIndex = 0;
+            let currentWord = "";
+            const titleElement = document.getElementById('myTitle');
+
+            function writeLetter() {
+                currentWord += annoyingSynonym[wordIndex][letterIndex];
+                titleElement.innerHTML = `My ${currentWord} Youtube Player :3`;
+                letterIndex++;
+
+                if (letterIndex == annoyingSynonym[wordIndex].length) {
+                    clearInterval(writingId);
+                    setTimeout(deleteLetter, 1000);
+                }
+            }
+
+            function deleteLetter() {
+                if (letterIndex > 0) {
+                    currentWord = currentWord.slice(0, -1);
+                    titleElement.innerHTML = `My ${currentWord} Youtube Player :3`;
+                    letterIndex--;
+                    setTimeout(deleteLetter, 100);
+                } else {
+                    wordIndex = (wordIndex + 1 ) % annoyingSynonym.length;
+                    writingId = setInterval(writeLetter, 250);
+                }
+            }
+
+            let writingId = setInterval(writeLetter, 250);
+        </script>
+    </div>
 
     <div id="myContainer">
 
