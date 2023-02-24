@@ -62,7 +62,7 @@
         </script>
     </div>
 
-    <div id="myContainer">
+    <div>
 
         <iframe id='myYoutubePlayer' src="https://www.youtube.com/embed/WrRSbvUZca8?start=40"
             frameborder="0"
@@ -70,6 +70,7 @@
             allowfullscreen></iframe>
 
         <script>
+
             var monitor = setInterval(function(){
                 let elem = document.activeElement;
                 if(elem && elem.tagName == 'IFRAME'){
@@ -116,7 +117,6 @@
 
             var rectId = null;
             function moveObject(elem) {
-
                 let changeX = 2;
                 let changeY = 2;
                 count = 0;
