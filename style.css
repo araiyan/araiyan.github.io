@@ -200,7 +200,9 @@ body {
 
 .imgProp {
     opacity: 20%;
+    display: inline-flex;
     position: absolute;
     left: 0%;
     bottom: 0%;
+    overflow: hidden;
 }
