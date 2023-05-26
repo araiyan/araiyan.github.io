@@ -199,7 +199,8 @@ body {
 } */
 
 .imgProp {
-    opacity: .2;
+    opacity: 20%;
     position: absolute;
     left: 0px;
+    transition: 3s;
 }
