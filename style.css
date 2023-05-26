@@ -130,7 +130,7 @@ body {
 .home-content p {
     position: relative;
     font-size: 16px;
-    margin: 20px 0 40px;
+    margin: 20px 0 20px;
 }
 
 .home-content p::before {
