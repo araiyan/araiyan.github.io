@@ -1,162 +1,26 @@
-<!Doctype html>
-<html>
-<style>
-    #myTitle {
-        width: auto;
-        height: auto;
-        position: relative;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    #myYoutubePlayer {
-        width: 120px;
-        height: 60px;
-        position: relative;
-    }
-    #myYoutubePlayer1 {
-        width: 120px;
-        height: 60px;
-        position: relative;
-    }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website HTML CSS Only Raiyan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
 
-    <div id="AnimatedTitleScreen">
-        <h1 id='myTitle' style="text-align: center; font-family:'Courier New', Courier, monospace;
-            border-width: 3px; border-style: solid; border-color: aqua;">
-            My Annoying Youtube Player :3
-        </h1>
+    <header class="header">
+        <a href="#" class="logo">Raiyan.</a>
 
-        <script>
-            const annoyingSynonym = ['Annoying', 'Irritating', 'Infuriating', 'Bothersome',
-                'Troublesome', 'Cute?', 'Pesky'];
-            let wordIndex = 0;
-            let letterIndex = 0;
-            let currentWord = "";
-            const titleElement = document.getElementById('myTitle');
-
-            function writeLetter() {
-                currentWord += annoyingSynonym[wordIndex][letterIndex];
-                titleElement.innerHTML = `My ${currentWord} Youtube Player :3`;
-                letterIndex++;
-
-                if (letterIndex == annoyingSynonym[wordIndex].length) {
-                    clearInterval(writingId);
-                    setTimeout(deleteLetter, 1000);
-                }
-            }
-
-            function deleteLetter() {
-                if (letterIndex > 0) {
-                    currentWord = currentWord.slice(0, -1);
-                    titleElement.innerHTML = `My ${currentWord} Youtube Player :3`;
-                    letterIndex--;
-                    setTimeout(deleteLetter, 100);
-                } else {
-                    wordIndex = (wordIndex + 1 ) % annoyingSynonym.length;
-                    writingId = setInterval(writeLetter, 250);
-                }
-            }
-
-            let writingId = setInterval(writeLetter, 250);
-        </script>
-    </div>
-
-    <div>
-
-        <iframe id='myYoutubePlayer' src="https://www.youtube.com/embed/WrRSbvUZca8?start=40"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-
-        <script>
-
-            var monitor = setInterval(function(){
-                let elem = document.activeElement;
-                if(elem && elem.tagName == 'IFRAME'){
-                    moveObject(elem);
-                    clearInterval(monitor);
-                }
-            }, 100);
-
-            function runAway() {
-
-                let count = 1;
-                document.addEventListener("mousemove", function(event) {
-                    
-                    if (count++ == 1) {
-                        let mX = event.clientX;
-                        let mY = event.clientY;
-
-                        var runAwayElem = document.getElementById("myYoutubePlayer");
-                        let computedStyles = window.getComputedStyle(runAwayElem);
-                        let xPos = parseInt(computedStyles.left);
-                        let yPos = parseInt(computedStyles.top);
-
-                        let diffX = mX - xPos - (runAwayElem.offsetWidth/2);
-                        let diffY = mY - yPos - (runAwayElem.offsetHeight/2) - 80;
-
-                        
-
-                        if ((Math.abs(diffX) < (runAwayElem.offsetWidth * 2)) 
-                            && (Math.abs(diffY) < (runAwayElem.offsetHeight * 2/3))) {
-                            xPos -= (Math.pow(((runAwayElem.offsetWidth * 2) - Math.abs(diffX)), 2)/(runAwayElem.offsetWidth*10)) * (diffX/Math.abs(diffX)); 
-                        }
-                        if ((Math.abs(diffY) < (runAwayElem.offsetHeight * 2)) 
-                            && (Math.abs(diffX) < (runAwayElem.offsetWidth * 2/3))) {
-                            yPos -= (Math.pow(((runAwayElem.offsetHeight * 2) - Math.abs(diffY)), 2)/(runAwayElem.offsetHeight*10)) * (diffY/Math.abs(diffY));
-                        }
-
-                        runAwayElem.style.left = xPos + 'px';
-                        runAwayElem.style.top = yPos + 'px';
-                    }
-
-                });
-                
-            }
-
-            var rectId = null;
-            function moveObject(elem) {
-                let changeX = 2;
-                let changeY = 2;
-                count = 0;
-                let computedStyles = window.getComputedStyle(elem);
-                let xPos = parseInt(computedStyles.left);
-                let yPos = parseInt(computedStyles.top);
-                setInterval(frame, 10);
-                setInterval(runAway, 5);
-                function frame() {
-                    count++;
-                    if (count % 10 == 0) {
-                        changeX = ((changeX / Math.abs(changeX)) * ((Math.random()*6) % 6));
-                        changeY = ((changeY / Math.abs(changeY)) * ((Math.random()*6) % 6));
-                    }
-                    
-                    if (changeX < 0 && xPos < 0) {
-                        changeX = Math.abs(changeX);
-                    } else if (changeX > 0 && xPos > window.innerWidth - elem.offsetWidth - 20) {
-                        changeX = -Math.abs(changeX);
-                    }
-    
-                    if (changeY < 0 && yPos < 0) {
-                        changeY = Math.abs(changeY);
-                    } else if (changeY > 0 && yPos > window.innerHeight - elem.offsetHeight - 100) {
-                        changeY = -Math.abs(changeY);
-                    }
-                    
-                    
-                    xPos = parseInt(computedStyles.left) + changeX + ((changeX / Math.abs(changeX)) * -2);
-                    yPos = parseInt(computedStyles.top) + changeY + ((changeY / Math.abs(changeY)) * -2);
-    
-                    elem.style.top = yPos + 'px';
-                    elem.style.left = xPos + 'px';
-                }
-            }
-        </script>
-    </div>
-
-    
-
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Hall Of Friends</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 </body>
-
 </html>
