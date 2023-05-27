@@ -171,7 +171,7 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 300px;
     height: 100%;
     background: #00abf0;
     border: 2px solid #00abf0;
@@ -209,6 +209,7 @@ body {
     left: 0;
     width: 0;
     height: 100%;
+    border-radius: 8px;
     background: #081b29;
     z-index: -1;
     transition: 0.5s;
@@ -295,10 +296,10 @@ body {
 
 .imgProp {
     opacity: 20%;
-    display: inline-flex;
+    display: grid;
     position: absolute;
-    left: 0%;
-    bottom: 0%;
+    left: 30vw;
+    top: 0%;
     background: transparent;
     overflow: hidden;
 }
@@ -314,6 +315,32 @@ body {
     animation: showRight 1s ease forwards;
     animation-delay: 3s;
     z-index: 2;
+}
+
+.fullscreen-image {
+    height: 100vh;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.about {
+    height: 100vh;
+    display: flex;
+    padding: 0 10%;
+    align-items: center;
+}
+
+.about-content {
+    max-width: 800px;
+}
+
+.about-content h1 {
+    color: #00abf0;
+    padding: 30px 0px;
+}
+
+.about-content p {
+    padding: 10px 0px;
 }
 
 /* KEYFRAMES ANIMATION */
