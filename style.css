@@ -187,6 +187,7 @@ body {
 
 .btn-box a:hover {
     color: #00abf0;
+    box-shadow: 0 0 10px #5cdbbc;
 }
 
 .btn-box a:nth-child(2) {
